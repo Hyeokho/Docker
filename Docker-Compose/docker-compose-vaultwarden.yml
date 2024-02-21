@@ -12,4 +12,4 @@ services:
     environment:
       - TZ=Asia/Seoul
       - WEBSOCKET_ENABLED=true
-      - ADMIN_TOKEN=coco@146005KHH #관리자용암호 https://[domain]/admin
+      - ADMIN_TOKEN={Admin_Password} #관리자용암호 https://[domain]/admin

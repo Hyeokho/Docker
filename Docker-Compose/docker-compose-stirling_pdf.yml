@@ -1,0 +1,14 @@
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    ports:
+      - '33800:8080'
+    volumes:
+      - ${DOCKER_DATA}/stirling_pdf/trainingdata:/usr/share/tessdata #Required for extra OCR languages
+      - ${DOCKER_DATA}/stirling_pdf/extraconfigs:/configs
+#      - ./customfiles:/customFiles/
+#      - ./logs:/logs/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+      - LANGS=ko_KR

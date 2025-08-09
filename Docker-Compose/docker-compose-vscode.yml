@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  code-server:
+    image: 'lscr.io/linuxserver/code-server:latest'
+    container_name: vscode
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Seoul
+      - PASSWORD={Password} # Optional
+      - SUDO_PASSWORD={Admin_Password} # Optional
+      - DEFAULT_WORKSPACE=/home/docker/vscode #optional
+      - DOCKER_MODS=linuxserver/mods:code-server-golang|linuxserver/mods:code-server-java11|linuxserver/mods:code-server-nodejs|linuxserver/mods:code-server-python3|linuxserver/mods:code-server-zsh
+      - CS_DISABLE_GETTING_STARTED_OVERRIDE=true
+    ports:
+      - 32800:8443
+    volumes:
+      - ${DOCKER_DATA}/vscode:/config
+      - ${DOCKER_DATA}/vscode:/home/docker/vscode
+      - /var/run/docker.sock:/var/run/docker.sock
+    #network_mode: host # 모든 서비스 포트를 사용 시
+    restart: unless-stopped
